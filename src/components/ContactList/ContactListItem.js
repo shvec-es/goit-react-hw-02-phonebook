@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Items = styled.li`
   width: 300px;
@@ -46,6 +47,16 @@ const ContactListItem = ({ contacts, onClick }) => {
       </Items>
     );
   });
+};
+
+ContactListItem.propTypes = {
+  contacs: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    }),
+  ),
 };
 
 export default ContactListItem;

@@ -1,7 +1,49 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+const Label = styled.label`
+  color: Teal;
+  font-size: 1em;
+`;
+
+const Input = styled.input`
+  padding: 0.5em;
+  margin: 0.5em;
+  color: Teal;
+  background: AliceBlue;
+  border: none;
+  border-radius: 3px;
+`;
+
+const Button = styled.button`
+  background: DarkCyan;
+  color: white;
+
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid DarkCyan;
+  border-radius: 3px;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background: white;
+    color: DarkCyan;
+  }
+`;
 
 class ContactForm extends Component {
+  static propTypes = {
+    name: PropTypes.string,
+    number: PropTypes.string,
+  };
+
   state = {
     name: '',
     number: '',
@@ -27,42 +69,6 @@ class ContactForm extends Component {
 
   render() {
     const { name, number } = this.state;
-
-    const Form = styled.form`
-      display: flex;
-      flex-direction: column;
-    `;
-    const Label = styled.label`
-      color: Teal;
-      font-size: 1em;
-    `;
-
-    const Input = styled.input`
-      padding: 0.5em;
-      margin: 0.5em;
-      color: Teal;
-      background: AliceBlue;
-      border: none;
-      border-radius: 3px;
-    `;
-
-    const Button = styled.button`
-      background: DarkCyan;
-      color: white;
-
-      font-size: 1em;
-      margin: 1em;
-      padding: 0.25em 1em;
-      border: 2px solid DarkCyan;
-      border-radius: 3px;
-      cursor: pointer;
-
-      &:hover,
-      &:focus {
-        background: white;
-        color: DarkCyan;
-      }
-    `;
 
     return (
       <Form onSubmit={this.handleSubmit}>

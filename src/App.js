@@ -5,6 +5,19 @@ import ContactForm from 'components/ContactForm';
 import Filter from 'components/Filter';
 import ContactList from 'components/ContactList';
 
+const Wrapper = styled.div`
+  width: 600px;
+  display: flex;
+  justify-content: space-between;
+  margin: 25px auto 0;
+`;
+
+const Title = styled.h2`
+  font-size: 1.5em;
+  text-align: center;
+  color: DarkCyan;
+`;
+
 class App extends Component {
   state = {
     contacts: [
@@ -50,19 +63,6 @@ class App extends Component {
   render() {
     const { filter } = this.state;
     const filteredContacts = this.getFilteredContacts();
-
-    const Wrapper = styled.div`
-      width: 600px;
-      display: flex;
-      justify-content: space-between;
-      margin: 25px auto 0;
-    `;
-
-    const Title = styled.h2`
-      font-size: 1.5em;
-      text-align: center;
-      color: DarkCyan;
-    `;
 
     return (
       <Wrapper>

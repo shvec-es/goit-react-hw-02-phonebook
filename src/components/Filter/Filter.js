@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Text = styled.p`
   margin-left: 10px;
@@ -23,6 +24,10 @@ const Filter = ({ filter, onChange }) => {
       <Input type="text" name="filter" value={filter} onChange={onChange} />
     </>
   );
+};
+
+Filter.propTypes = {
+  filter: PropTypes.string,
 };
 
 export default Filter;
