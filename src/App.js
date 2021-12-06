@@ -1,22 +1,9 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import { Wrapper, Title } from 'styles';
 import { nanoid } from 'nanoid';
 import ContactForm from 'components/ContactForm';
 import Filter from 'components/Filter';
 import ContactList from 'components/ContactList';
-
-const Wrapper = styled.div`
-  width: 600px;
-  display: flex;
-  justify-content: space-between;
-  margin: 25px auto 0;
-`;
-
-const Title = styled.h2`
-  font-size: 1.5em;
-  text-align: center;
-  color: DarkCyan;
-`;
 
 class App extends Component {
   state = {
@@ -34,15 +21,18 @@ class App extends Component {
   };
 
   addContact = ({ name, number }) => {
-    const newContact = {
-      id: nanoid(),
-      name: name,
-      number: number,
-    };
-
-    this.setState(prevState => ({
-      contacts: [newContact, ...prevState.contacts],
-    }));
+    if (this.state.contacts.find(contact => contact.name === name)) {
+      alert(`${name} is already in contacts!`);
+    } else {
+      const newContact = {
+        id: nanoid(),
+        name: name,
+        number: number,
+      };
+      this.setState(prevState => ({
+        contacts: [newContact, ...prevState.contacts],
+      }));
+    }
   };
 
   deleteContact = contactId => {
@@ -68,7 +58,7 @@ class App extends Component {
       <Wrapper>
         <div>
           <Title>Phonebook</Title>
-          <ContactForm contacts={filteredContacts} onSubmit={this.addContact} />
+          <ContactForm onSubmit={this.addContact} />
         </div>
         {filteredContacts.length > 0 ? (
           <div>

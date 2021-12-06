@@ -1,42 +1,6 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import { Form, Label, Input, Button } from 'styles';
 import PropTypes from 'prop-types';
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-const Label = styled.label`
-  color: Teal;
-  font-size: 1em;
-`;
-
-const Input = styled.input`
-  padding: 0.5em;
-  margin: 0.5em;
-  color: Teal;
-  background: AliceBlue;
-  border: none;
-  border-radius: 3px;
-`;
-
-const Button = styled.button`
-  background: DarkCyan;
-  color: white;
-
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid DarkCyan;
-  border-radius: 3px;
-  cursor: pointer;
-
-  &:hover,
-  &:focus {
-    background: white;
-    color: DarkCyan;
-  }
-`;
 
 class ContactForm extends Component {
   static propTypes = {
@@ -56,13 +20,10 @@ class ContactForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
-    this.props.contacts.find(contact => contact.name === this.state.name)
-      ? alert(`${this.state.name} is already in contacts!`)
-      : this.props.onSubmit({
-          name: this.state.name,
-          number: this.state.number,
-        });
+    this.props.onSubmit({
+      name: this.state.name,
+      number: this.state.number,
+    });
 
     this.setState({ name: '', number: '' });
   };

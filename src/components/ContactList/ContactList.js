@@ -1,18 +1,20 @@
 import React from 'react';
 import ContactListItem from './ContactListItem';
-import styled from 'styled-components';
-
-const List = styled.ul`
-  margin-top: 15px;
-  padding: 15px;
-  border: 2px solid DarkCyan;
-  border-radius: 3px;
-`;
+import { List, Items } from 'styles';
 
 const ContactList = ({ contacts, onClick }) => {
   return (
     <List>
-      <ContactListItem contacts={contacts} onClick={onClick} />
+      {contacts.map(({ id, name, number }) => (
+        <Items key={id}>
+          <ContactListItem
+            id={id}
+            name={name}
+            number={number}
+            onClick={onClick}
+          />
+        </Items>
+      ))}
     </List>
   );
 };
